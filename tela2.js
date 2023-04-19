@@ -79,23 +79,28 @@ const App = () => {
 };
 
   return (
+  <ScrollView>
     <View style={styles.container}>
 
-         <View style={styles.boxtitulo}>
-          <Text style={styles.title}>Reserva de Mesas</Text>
-         </View>
-          <FlatList
-            numColumns={2}
-            keyExtractor={(item) => item.nome}
-            data={produtos}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => apertarBotao(item)}>
-                <Text style={styles.item}>{item.nome}</Text>
-              </TouchableOpacity>
-            )}
-          />
-        
+      <View style={styles.boxtitulo}>
+        <Text style={styles.title}>Reserva de Mesas</Text>
+      </View>
+
+      <FlatList
+        numColumns={2}
+        keyExtractor={(item) => item.nome}
+        data={produtos}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => apertarBotao(item)}>
+            <Text style={styles.item}>{item.nome}</Text>
+          </TouchableOpacity>
+        )}
+      />
+
     </View>
+  </ScrollView>
+
+
   );
 };
 const styles = StyleSheet.create({

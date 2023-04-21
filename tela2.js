@@ -3,7 +3,7 @@ import {FlatList, ScrollView, StatusBar, StyleSheet, Button, Text, View,Touchabl
 } from "react-native";
 
 const App = () => {
-  const [produtos, setProdutos] = useState([
+  const [mesas, setMesas] = useState([
     {
       nome: 'Mesa 1',
       key: 1,
@@ -66,11 +66,11 @@ const App = () => {
     },
   ]);
 
-  const apertarBotao = (item) => {
-  console.log(item.descriçao);
+  const apertarBotao = (boxItem) => {
+  console.log(boxItem.descriçao);
   Alert.alert(
-    item.nome,
-    item.descriçao,
+    boxItem.nome,
+    boxItem.descriçao,
     [
       { text: "Reservar", onPress: () => console.log("Botão Reservar pressionado") },
       { text: "Cancelar", onPress: () => console.log("Botão Cancelar pressionado") }
@@ -87,15 +87,18 @@ const App = () => {
       </View>
 
       <FlatList
-        numColumns={2}
-        keyExtractor={(item) => item.nome}
-        data={produtos}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => apertarBotao(item)}>
-            <Text style={styles.item}>{item.nome}</Text>
-          </TouchableOpacity>
-        )}
-      />
+  numColumns={2}
+  keyExtractor={(item) => item.nome}
+  data={mesas}
+  renderItem={({ item }) => (
+    <TouchableOpacity onPress={() => apertarBotao(item)}>
+      <View style={styles.boxItem}>
+        <Text style={styles.itemText}>{item.nome}</Text>
+      </View>
+    </TouchableOpacity>
+  )}
+/>
+
 
     </View>
   </ScrollView>
@@ -108,25 +111,28 @@ const styles = StyleSheet.create({
    flex: 1,
     backgroundColor: 'pink',
     justifyContent: 'center',
+    alignItems:'center',
     marginTop: 20,
   },
 
-  item: {
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: "bold",
-    alignItems: "center",
+  boxItem: {
     justifyContent: "center",
+    alignItems:'center',
     backgroundColor: "#FF69B4",
-    marginTop: 40,
-    marginHorizontal:20,
-    alignContent: "center",
+    borderColor: "black",
+    marginTop: 30, 
+    marginHorizontal: 5,
     width: 160,
     height: 110,
     padding: 20,
     borderRadius: 10,
-    borderColor: "black",
     borderWidth: 2,
+    
+  },
+
+  itemText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
   
   boxtitulo: {

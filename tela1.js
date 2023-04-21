@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "reac
 const App = () => {
   const onPressAcessar = () => {
     // Ao clicar em Acessar faz algo
-    Alert.alert('Acesso liberado!', `${nome},${cpf}`)
+    Alert.alert('Acesso liberado!' `${nome},${cpf}`)
   };
   const onPressEsqueceuASenha = () => {
     // Ao clicar em Esqueceu a senha faz algo
@@ -20,9 +20,9 @@ const App = () => {
   return (
     <View style={styles.container}>
 
-     <View style={styles.box1}>
-      <Text style={styles.titulo}>Kalima's Restaurant</Text>
-     </View> 
+      <View style={styles.box1}>
+        <Text style={styles.titulo}>Kalima's Restaurant</Text>
+      </View>
 
       <View style={styles.inputView}>
         <Ionicons name="person" size={24} color="black" />
@@ -30,18 +30,20 @@ const App = () => {
           style={styles.inputText}
           placeholder=" Nome Completo"
           placeholderTextColor="#003f5c"
-          onChangeText={(text) => setEmail(text)}/>
+          onChangeText={(text) => setNome(text)} />
       </View>
 
       <View style={styles.inputView}>
-      <AntDesign name="idcard" size={24} color="black" />
+        <AntDesign name="idcard" size={24} color="black" />
         <TextInput
           style={styles.inputText}
-          secureTextEntry
-          placeholder=" CPF "
+          placeholder=" CPF"
           placeholderTextColor="#003f5c"
-          onChangeText={(text) => setPassword(text)}
+          maxLength={11}
+          keyboardType="numeric"
+          onChangeText={(text) => setCpf(text)}
         />
+
       </View>
 
       <TouchableOpacity onPress={onPressEsqueceuASenha}>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  
+
   box1: {
     marginBottom: 30,
   },
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
   },
-  
+
   inputText: {
     height: 50,
     color: "black",
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
   loginText: {
     fontWeight: "bold",
     flexDirection: "row",
-    color:'black',
+    color: 'black',
     fontSize: 16,
   },
 
